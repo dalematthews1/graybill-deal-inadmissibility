@@ -7,12 +7,12 @@ independent samples of size $n$ from $N(\mu, \sigma_1^2)$ and
 $N(\mu, \sigma_2^2)$ with a common mean and positive variances, the
 explicit clipped estimator
 
-$$
+```math
 \hat\mu_* = \bar X_1 + w_* D,
 \qquad
-w_* = \operatorname{clip}_{[0,1]}
+w_* = \mathrm{clip}_{[0,1]}
   \Bigl(r + \varepsilon_n\, r(1-r)(1-2r)(4-q)\Bigr),
-$$
+```
 
 with $D = \bar X_2 - \bar X_1$, $r = S_1^2/(S_1^2+S_2^2)$, and
 $q = n\,D^2/(S_1^2+S_2^2)$, has strictly smaller squared-error risk than
@@ -183,50 +183,50 @@ For readers who want to sanity-check the mathematics without running Lean,
 - `IntegratedCoefficients.lean` and `CollectedIntegration.lean`: the
   coefficient-by-coefficient integral identity, dominated-convergence
   assembly, and the unconditional analytic theorem
-  $$
+  ```math
   I_{13}(s)=\sum_{m=0}^{\infty}M_{m+1}Q_m(s^2)^m
   \ge M_1\frac{1489}{5610}>0
   \qquad (|s|<1).
-  $$
+  ```
   The corresponding Lean declarations are
   `hasSum_seriesTerm13_sq_eq_I13`, `I13_eq_seriesSum13_sq`,
   `certificate_le_I13`, and `I13_pos`.
 - `QuadraticBounds.lean`: pairing and algebraic monotonicity of the two
   quadratic kernels, exact endpoint-polynomial integration, and
-  $$
+  ```math
   \mathcal J_4(s)\le\frac{256}{165},\qquad
   \mathcal J_6(s)\le\frac{64}{9},\qquad
   \mathcal J_4(s)+\frac{15}{4}\frac{18}{55}\mathcal J_6(s)
   \le\frac{1696}{165}.
-  $$
+  ```
   These are `integral_quadraticKernel4_le`,
   `integral_quadraticKernel6_le`, and `n13_quadratic_integrals_le`.
 - `Reduced.lean`: the exact $n=13$ formulas for $B_g,C_g,B_\theta,C_\theta$,
   the pointwise and integrated bound
-  $$
+  ```math
   C_\theta(s)\le
   K_a(1-s^2)^2\frac{1696}{165},
-  $$
+  ```
   and the ratio-free strict inequality
-  $$
+  ```math
   2\varepsilon B_\theta(s)+\varepsilon^2C_\theta(s)<0.
-  $$
+  ```
   `reducedRiskDifference13_neg_of_epsilon` proves this for every positive
   $\varepsilon$ below the certified uniform threshold, and
   `reducedRiskDifference13_neg` specializes it to
   $\varepsilon=1/2000$.
 - `GammaMoments.lean`: the Mellin moment formula for Mathlib's gamma
   distribution, including integrability, and the five exact values
-  $$
+  ```math
   E[V]=1,\quad E[V^2]=3,\quad E[V^3]=15,\qquad
   E[L^{-1}]=\frac1{22},\quad E[L^{-2}]=\frac1{440}.
-  $$
+  ```
 - `BetaBridge.lean`: the exact centered pushforward of `Beta(6,6)`,
-  $$
-  \int f(p)\,d\operatorname{Beta}(6,6)(p)
+  ```math
+  \int f(p)\,d\mathrm{Beta}(6,6)(p)
   =\frac{693}{512}\int_{-1}^{1}
     f\!\left(\frac{1+x}{2}\right)(1-x^2)^5\,dx,
-  $$
+  ```
   and its two specializations to the linear and quadratic canonical
   integrands.
 - `CanonicalProduct.lean`: factorization of the mixed moments using
@@ -238,11 +238,11 @@ For readers who want to sanity-check the mathematics without running Lean,
   `canonicalMomentBridge13_of_component_laws`.  Its corollary
   `canonicalNormalizedRiskDifference13_neg_of_component_laws` proves the
   strict normalized risk inequality assuming only
-  $$
-  P\sim\operatorname{Beta}(6,6),\quad
-  L\sim\operatorname{Gamma}(12,\tfrac12),\quad
-  V\sim\operatorname{Gamma}(\tfrac12,\tfrac12),
-  $$
+  ```math
+  P\sim\mathrm{Beta}(6,6),\quad
+  L\sim\mathrm{Gamma}(12,\tfrac12),\quad
+  V\sim\mathrm{Gamma}(\tfrac12,\tfrac12),
+  ```
   together with $P\perp(L,V)$ and $V\perp L$.
 - `Canonical.lean` and `CanonicalClipping.lean`: conversion of the two
   canonical expectations to the reduced coefficients, scaling to ordinary
@@ -255,25 +255,25 @@ For readers who want to sanity-check the mathematics without running Lean,
   derives every cross-term and individual-risk integrability obligation and
   concludes strict risk improvement for the clipped estimator.
 - `NormalSquare.lean`: the exact pushforward
-  $Z^2\sim\operatorname{Gamma}(1/2,1/2)$ for a standard normal, common-rate
+  $Z^2\sim\mathrm{Gamma}(1/2,1/2)$ for a standard normal, common-rate
   gamma convolution and finite-sum laws, and the
-  $\operatorname{Gamma}(6,1/2)$ law for a sum of twelve independent
+  $\mathrm{Gamma}(6,1/2)$ law for a sum of twelve independent
   standard-normal squares.
 - `BetaGamma.lean`: the two-dimensional change of variables
   $(p,\ell)\mapsto(p\ell,(1-p)\ell)$, including its Jacobian, and the exact
-  theorem that two independent $\operatorname{Gamma}(6,1/2)$ variables give
+  theorem that two independent $\mathrm{Gamma}(6,1/2)$ variables give
   an independent
-  $P\sim\operatorname{Beta}(6,6)$ and
-  $L\sim\operatorname{Gamma}(12,1/2)$.
+  $P\sim\mathrm{Beta}(6,6)$ and
+  $L\sim\mathrm{Gamma}(12,1/2)$.
 - `NormalSample.lean` and `Cochran13.lean`: the raw two-sample normal model,
   sample-mean and mean-difference laws, Gaussian mean/residual block
   independence, the twelve-dimensional residual-hyperplane decomposition,
   and
-  $$
-  \frac{\operatorname{RSS}_g}{\sigma_g^2}
+  ```math
+  \frac{\mathrm{RSS}_g}{\sigma_g^2}
   =\frac{12S_g^2}{\sigma_g^2}
-  \sim\operatorname{Gamma}(6,\tfrac12).
-  $$
+  \sim\mathrm{Gamma}(6,\tfrac12).
+  ```
 - `GaussianMeanBridge.lean`, `SummaryTransform.lean`, and
   `RawNormalSummary.lean`: the squared standardized mean-difference law,
   centered-error moments, beta–gamma independence transport, and the direct
@@ -288,9 +288,9 @@ For readers who want to sanity-check the mathematics without running Lean,
 - `RawPositivity.lean`: strict positivity almost everywhere of each scaled
   residual sum, residual sum of squares, and sample variance.  In particular,
   it proves
-  $$
+  ```math
   S_1^2+S_2^2>0
-  $$
+  ```
   almost everywhere, together with nonvanishing of every denominator used
   by the canonical coordinates.
 - `RawEstimatorCoordinates.lean`: literal definitions of the ordinary
@@ -317,9 +317,9 @@ pieces now compile:
   quadratic integral bounds are supplied.
 - `GeneralMoments.lean`, `GeneralCoefficients.lean`, and
   `GeneralSeriesCoefficients.lean` prove the beta-moment recurrence
-  $$
+  ```math
   (2j+1)M_{\nu,j}=(2j+\nu+3)M_{\nu,j+1},
-  $$
+  ```
   derive the first three coefficient/moment products, assemble the five
   positive tail polynomials, and prove that the coefficients obtained from
   the paired kernel equal the advertised closed sequence for every index.
@@ -329,25 +329,25 @@ pieces now compile:
   $x/-x$ identity with the real-power factor $(1-x^2)^{\nu/2}$ and lift it
   to the symmetric integral $I_\nu(s)$.
 - `GeneralMomentIntegral.lean` identifies the beta-defined moment with
-  $$
+  ```math
   M_{\nu,j}=\int_0^1x^{2j}(1-x^2)^{\nu/2}\,dx,
-  $$
+  ```
   including the real-power endpoint and integrability facts.
 - `GeneralSeriesIntegration.lean`, `GeneralCollectedPointwise.lean`, and
   `GeneralCollectedBounds.lean` establish the pointwise negative-binomial
   expansion, exact target-power collection, and the summable uniform
   majorant
-  $$
+  ```math
   65\binom{m+4}{4}(s^2)^m.
-  $$
+  ```
 - `GeneralIntegratedCoefficients.lean`,
   `GeneralCollectedIntegration.lean`, and
   `GeneralCentralAnalytic.lean` prove
-  $$
+  ```math
   I_\nu(s)
     =\sum_{m=0}^{\infty}M_{\nu,m+1}Q_{\nu,m}(s^2)^m
     \ge M_{\nu,1}L_\nu(s^2)>0
-  $$
+  ```
   for every natural $\nu\geq9$ and $|s|<1$.  The declarations
   `general_certificate_le_generalI_sampleSize` and
   `generalI_pos_sampleSize` state the result directly for every equal
@@ -356,75 +356,75 @@ pieces now compile:
   bound by the two kernels whose endpoint integrals give $J_4$ and $J_6$.
 - `GeneralQuadraticEndpoint4.lean` and
   `GeneralQuadraticEndpoint6.lean` evaluate those endpoint integrals:
-  $$
+  ```math
   J_4(\nu)=2^{\nu-1}B(\nu/2+2,\nu/2-2),\qquad
   J_6(\nu)=2^{\nu-3}B(\nu/2+2,\nu/2-4).
-  $$
+  ```
   They also prove that these values uniformly bound the corresponding
   kernels for every $\nu\geq9$ and $|s|<1$.  The $J_6$ proof includes the
   integrable endpoint singularity at $\nu=9$.
 - `GeneralReduced.lean` and `GeneralQuadraticBounds.lean` combine the
   endpoint values into
-  $$
+  ```math
   H_\nu=J_4(\nu)
     +\frac{15\nu^2}{16(\nu-1)(\nu-2)}J_6(\nu)
-  $$
+  ```
   and prove that, for every natural $\nu\geq9$ and every positive
   normalizing constant $K_a$, there is a single $\varepsilon_\nu>0$ such
   that
-  $$
+  ```math
   2\varepsilon_\nu B_\theta(s)
     +\varepsilon_\nu^2C_\theta(s)<0
   \qquad\text{for every }|s|<1.
-  $$
+  ```
 - `GeneralBetaBridge.lean`, `GeneralCanonicalAlgebra.lean`, and
   `GeneralCanonicalProduct.lean` prove the arbitrary-shape centered-beta
   formula and the generic product-moment reductions.  In particular,
-  $$
+  ```math
   E[V^2/L]=\frac{3}{2(\nu-1)},\qquad
   E[V^3/L^2]=\frac{15}{4(\nu-1)(\nu-2)}.
-  $$
+  ```
 - `GeneralCanonical.lean`, `GeneralCanonicalClipping.lean`, and
   `GeneralCanonicalLaws.lean` connect the reduced inequality to normalized
   squared risk.  The law-only theorem
   `exists_generalCanonicalRisk_epsilon_of_component_laws` assumes exactly
-  $$
-  P\sim\operatorname{Beta}(\nu/2,\nu/2),\quad
-  L\sim\operatorname{Gamma}(\nu,1/2),\quad
-  V\sim\operatorname{Gamma}(1/2,1/2),
-  $$
+  ```math
+  P\sim\mathrm{Beta}(\nu/2,\nu/2),\quad
+  L\sim\mathrm{Gamma}(\nu,1/2),\quad
+  V\sim\mathrm{Gamma}(1/2,1/2),
+  ```
   together with $P\perp(L,V)$ and $V\perp L$, and returns one positive
   $\varepsilon_\nu$ whose normalized risk difference is negative
   simultaneously for all $|s|<1$.
 - `GeneralGammaMoments.lean` proves
-  $$
+  ```math
   E[L^{-1}]=\frac1{2(\nu-1)},\qquad
   E[L^{-2}]=\frac1{4(\nu-1)(\nu-2)}
-  $$
-  for $L\sim\operatorname{Gamma}(\nu,\tfrac12)$, including integrability.
+  ```
+  for $L\sim\mathrm{Gamma}(\nu,\tfrac12)$, including integrability.
 - `GeneralBetaGamma.lean` proves for arbitrary admissible shape $a$ and
-  rate $r$ that two independent $\operatorname{Gamma}(a,r)$ variables
+  rate $r$ that two independent $\mathrm{Gamma}(a,r)$ variables
   yield an independent beta ratio and gamma sum.
 - `GeneralNormalSample.lean` parameterizes each raw sample by
   `Fin (ν + 1)` and proves the generic sample-mean and mean-difference laws,
   mean/residual independence, residual-sum independence, and Cochran law
-  $$
-  \operatorname{RSS}_g/\sigma_g^2
-    \sim\operatorname{Gamma}(\nu/2,\tfrac12).
-  $$
+  ```math
+  \mathrm{RSS}_g/\sigma_g^2
+    \sim\mathrm{Gamma}(\nu/2,\tfrac12).
+  ```
 - `GeneralGaussianMeanBridge.lean` proves the generic standardized
   mean-difference law
-  $$
+  ```math
   \frac{(\nu+1)D^2}{\sigma_1^2+\sigma_2^2}
-    \sim\operatorname{Gamma}(1/2,1/2),
-  $$
+    \sim\mathrm{Gamma}(1/2,1/2),
+  ```
   its first three integrability consequences, and independence from the
   pair of (raw or variance-scaled) residual sums of squares.
 - `GeneralGraybillDealEpsilon.lean` chooses, for each $\nu\geq9$, a fixed
   coefficient
-  $$
+  ```math
   \varepsilon_\nu=\texttt{generalGraybillDealEpsilon }\nu>0
-  $$
+  ```
   from the uniform reduced-risk theorem.  It depends only on $\nu$, not on
   $\mu$ or either population variance, and its certified reduced-risk
   inequality holds simultaneously for every $|s|<1$.
@@ -464,27 +464,27 @@ $n=13$ works uniformly over all sample sizes.
 Let $\nu=n-1\geq9$.  For two independent measurable samples of size
 $\nu+1$ from $N(\mu,\sigma_i^2)$ with $\sigma_i^2>0$, put
 
-$$
+```math
 D=\bar X_2-\bar X_1,\qquad
 r=\frac{S_1^2}{S_1^2+S_2^2},\qquad
 q=\frac{(\nu+1)D^2}{S_1^2+S_2^2}.
-$$
+```
 
 The formalization fixes a number $\varepsilon_\nu>0$ depending only on
 $\nu$ and defines
 
-$$
-w_\nu=\operatorname{clip}_{[0,1]}
+```math
+w_\nu=\mathrm{clip}_{[0,1]}
   \left(r+\varepsilon_\nu r(1-r)(1-2r)(4-q)\right).
-$$
+```
 
 The declaration `rawGraybillDealEstimatorN_strictly_dominated` proves
 
-$$
+```math
 R(\mu,\bar X_1+w_\nu D)
 <
 R(\mu,\bar X_1+rD)
-$$
+```
 
 for every common mean and every pair of positive population variances in
 the formalized two-sample normal model.  Consequently, for every fixed
@@ -497,26 +497,26 @@ cover unequal sample sizes or equal sample sizes below ten.
 For two independent measurable samples of size thirteen from
 $N(\mu,\sigma_i^2)$ with $\sigma_i^2>0$, put
 
-$$
+```math
 D=\bar X_2-\bar X_1,\qquad
 r=\frac{S_1^2}{S_1^2+S_2^2},\qquad
 q=\frac{13D^2}{S_1^2+S_2^2},
-$$
+```
 
 and
 
-$$
-w_*=\operatorname{clip}_{[0,1]}
+```math
+w_*=\mathrm{clip}_{[0,1]}
   \left(r+\frac1{2000}r(1-r)(1-2r)(4-q)\right).
-$$
+```
 
 The declaration `rawGraybillDealEstimator13_strictly_dominated` proves
 
-$$
+```math
 R(\mu,\bar X_1+w_*D)
 <
 R(\mu,\bar X_1+rD)
-$$
+```
 
 for every $\mu\in\mathbb R$ and every pair of positive population
 variances.  Thus the fixed-$n=13$ construction is a machine-checked
