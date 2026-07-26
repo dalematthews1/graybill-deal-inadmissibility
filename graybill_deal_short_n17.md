@@ -926,6 +926,93 @@ $$
 \end{aligned}
 $$
 
+> **[Annotation] Checking the differentiation identity with Wolfram|Alpha.**
+> Ask Wolfram|Alpha to
+> [“differentiate \(8s^4x^5(1-x^2)^9/(1-s^2x^2)^4\) with respect to \(x\)”](https://www.wolframalpha.com/input?i=differentiate%208%20s%5E4%20x%5E5%20%281-x%5E2%29%5E9%2F%281-s%5E2%20x%5E2%29%5E4%20with%20respect%20to%20x).
+> Its result is
+>
+> $$\frac d{dx}\left[
+> \frac{8s^4x^5(1-x^2)^9}{(1-s^2x^2)^4}\right]
+> =
+> -\frac{8s^4x^4(1-x^2)^8
+> \big[15s^2x^4+(3s^2-23)x^2+5\big]}
+> {(s^2x^2-1)^5}.$$
+>
+> Now use $z=s^2x^2$. Since
+> $(s^2x^2-1)^5=-(1-z)^5$, the minus signs cancel; also
+> $s^4x^4=z^2$ and
+>
+> $$15s^2x^4+(3s^2-23)x^2+5
+> =5+3z-23x^2+15x^2z.$$
+>
+> Thus the Wolfram|Alpha result is
+>
+> $$(1-x^2)^8
+> \frac{8z^2\big(5+3z-23x^2+15x^2z\big)}
+> {(1-z)^5}.$$
+>
+> It remains to simplify the square brackets on the left of (7). Put $a=sx$, so
+> $z=a^2$. The definition of $f_s$ gives
+>
+> $$f_s(x)=\frac{(x^2+a)(1+5a)}{(1+a)^5},\qquad
+> f_s(-x)=\frac{(x^2-a)(1-5a)}{(1-a)^5}.$$
+>
+> Their common denominator is
+> $(1-a^2)^5=(1-z)^5$. For the numerator, set
+>
+> $$A=(1+5a)(1-a)^5,\qquad B=(1-5a)(1+a)^5.$$
+>
+> Expanding these two polynomials gives
+>
+> $$\begin{aligned}
+> A&=1-15a^2+40a^3-45a^4+24a^5-5a^6,\\
+> B&=1-15a^2-40a^3-45a^4-24a^5-5a^6.
+> \end{aligned}$$
+>
+> Hence, grouping their even and odd parts and using $z=a^2$,
+>
+> $$\frac{A+B}{2}=1-15z-45z^2-5z^3,\qquad
+> \frac{A-B}{2}=40a^3+24a^5.$$
+>
+> Consequently,
+>
+> $$\begin{aligned}
+> \frac{f_s(x)+f_s(-x)}2
+> &=\frac{(x^2+a)A+(x^2-a)B}{2(1-z)^5}\\
+> &=\frac{x^2(A+B)/2+a(A-B)/2}{(1-z)^5}\\
+> &=\frac{x^2(1-15z-45z^2-5z^3)+40z^2+24z^3}
+> {(1-z)^5},
+> \end{aligned}$$
+>
+> where $a(40a^3+24a^5)=40a^4+24a^6=40z^2+24z^3$.
+> Put the other fraction over the same denominator:
+>
+> $$\begin{aligned}
+> \frac{x^2(1-14z+125z^2)}{(1-z)^4}
+> &=\frac{x^2(1-14z+125z^2)(1-z)}{(1-z)^5}\\
+> &=\frac{x^2(1-15z+139z^2-125z^3)}{(1-z)^5}.
+> \end{aligned}$$
+>
+> Subtracting the numerators now gives
+>
+> $$\begin{aligned}
+> &x^2(1-15z-45z^2-5z^3)+40z^2+24z^3\\
+> &\quad-x^2(1-15z+139z^2-125z^3)\\
+> &=40z^2+24z^3-184x^2z^2+120x^2z^3\\
+> &=8z^2\big(5+3z-23x^2+15x^2z\big).
+> \end{aligned}$$
+>
+> Therefore
+>
+> $$\frac{f_s(x)+f_s(-x)}2
+> -\frac{x^2(1-14z+125z^2)}{(1-z)^4}
+> =
+> \frac{8z^2\big(5+3z-23x^2+15x^2z\big)}
+> {(1-z)^5}.$$
+>
+> Multiplication by $(1-x^2)^8$ now gives exactly the Wolfram|Alpha derivative,
+> proving (7).
+
 The primitive on the right vanishes at $x=\pm1$. Since $(1-x^2)^8$ is even,
 integrating (7) gives
 
@@ -936,6 +1023,43 @@ x^2(1-x^2)^8
 \frac{1-14z+125z^2}{(1-z)^4}\,dx.
 \tag{8}
 $$
+
+> **[Annotation] Derivation of (8) from (7).** Write
+>
+> $$w(x)=(1-x^2)^8,\qquad
+> G(x)=\frac{8s^4x^5(1-x^2)^9}{(1-s^2x^2)^4}.$$
+>
+> Integrating both sides of (7) from $-1$ to $1$ and applying the fundamental
+> theorem of calculus to its right-hand side gives
+>
+> $$\begin{aligned}
+> &\int_{-1}^1 w(x)\frac{f_s(x)+f_s(-x)}2\,dx\\
+> &\quad-\int_{-1}^1w(x)x^2
+> \frac{1-14z+125z^2}{(1-z)^4}\,dx
+> =G(1)-G(-1).
+> \end{aligned}$$
+>
+> Since $|s|<1$, the denominator of $G$ does not vanish on $[-1,1]$; and at
+> each endpoint the factor $(1-x^2)^9$ in its numerator is zero. Hence
+> $G(1)=G(-1)=0$.
+>
+> It remains to identify the first integral. By (6),
+>
+> $$K(s)=\int_{-1}^1w(x)f_s(x)\,dx.$$
+>
+> Because $w$ is even, the substitution $u=-x$ also gives
+>
+> $$\int_{-1}^1w(x)f_s(-x)\,dx
+> =\int_{-1}^1w(u)f_s(u)\,du
+> =K(s).$$
+>
+> Therefore the average of these two integrals is again $K(s)$:
+>
+> $$\int_{-1}^1w(x)\frac{f_s(x)+f_s(-x)}2\,dx
+> =\frac{K(s)+K(s)}2=K(s).$$
+>
+> Substituting this and $G(1)-G(-1)=0$ into the integrated form of (7), then
+> moving the second integral to the right, yields exactly (8).
 
 Here $0\le z<1$, and
 
@@ -965,6 +1089,33 @@ $$
 \tag{10}
 $$
 
+> **[Annotation] Checking the beta-integral ratio.** The quickest check is to ask
+> Wolfram|Alpha to evaluate the
+> [entire ratio of definite integrals](https://www.wolframalpha.com/input?i=%28integral%20from%20-1%20to%201%20of%20x%5E2%20%281-x%5E2%29%5E8%20dx%29%2F%28integral%20from%20-1%20to%201%20of%20%281-x%5E2%29%5E7%20dx%29);
+> it returns $16/323$ directly.
+>
+> For a short hand derivation, both integrands are even. On $[0,1]$, substitute
+> $t=x^2$, so $dx=dt/(2\sqrt t)$. Then
+>
+> $$\int_{-1}^1x^2(1-x^2)^8\,dx
+> =B\!\left(\frac32,9\right),\qquad
+> \int_{-1}^1(1-x^2)^7\,dx
+> =B\!\left(\frac12,8\right).$$
+>
+> Using $B(a,b)=\Gamma(a)\Gamma(b)/\Gamma(a+b)$, their ratio is
+>
+> $$\begin{aligned}
+> \frac{B(3/2,9)}{B(1/2,8)}
+> &=
+> \frac{\Gamma(3/2)}{\Gamma(1/2)}
+> \frac{\Gamma(9)}{\Gamma(8)}
+> \frac{\Gamma(17/2)}{\Gamma(21/2)}\\
+> &=\frac12\cdot8\cdot
+> \frac{1}{(17/2)(19/2)}
+> =\frac12\cdot8\cdot\frac4{323}
+> =\frac{16}{323}.
+> \end{aligned}$$
+
 Combining (5), (9), and (10),
 
 $$
@@ -975,11 +1126,43 @@ B<
 \tag{11}
 $$
 
-> **[Annotation]** Identity (7) is the one step of the proof that is not
-> hand-checkable — it is a rational-function identity of degree about $20$ in
-> $x$ — and it is the load-bearing claim. It has been verified exactly (see the
-> log below), along with the vanishing of the primitive at $x=\pm1$ and the
-> agreement of (6) with (8) at several values of $s$.
+> **[Annotation] Derivation of (11).** Let
+>
+> $$I=\int_{-1}^1x^2(1-x^2)^8\,dx.$$
+>
+> Equation (5) says
+>
+> $$B=-\frac{\lambda(1-s^2)^2}{40Z}K(s),$$
+>
+> while (9) says $K(s)>\frac35 I$. The coefficient
+> $-\lambda(1-s^2)^2/(40Z)$ is strictly negative: $\lambda>0$, $Z>0$, and
+> $|s|<1$. Multiplying the bound for $K(s)$ by this negative coefficient
+> therefore reverses the inequality:
+>
+> $$B<
+> -\frac{\lambda(1-s^2)^2}{40Z}\cdot\frac35 I
+> =-\frac{\lambda(1-s^2)^2}{40}\cdot\frac35\cdot\frac IZ.$$
+>
+> By the definition of $Z$ and equation (10),
+>
+> $$Z=\int_{-1}^1(1-x^2)^7\,dx,\qquad
+> \frac IZ=\frac{16}{323}.$$
+>
+> Substitution gives the first expression in (11). Finally,
+>
+> $$\frac1{40}\cdot\frac35\cdot\frac{16}{323}
+> =\frac{3\cdot16}{40\cdot5\cdot323}
+> =\frac6{25\cdot323}
+> =\frac6{8075},$$
+>
+> which gives the last expression in (11).
+
+> **[Annotation]** Identity (7) is the most algebraically tedious step — it is a
+> rational-function identity of degree about $20$ in $x$ — and it is the
+> load-bearing claim. The calculation above checks it against Wolfram|Alpha's
+> exact derivative, and the original verification script checks it independently
+> (see the log below), along with the vanishing of the primitive at $x=\pm1$ and
+> the agreement of (6) with (8) at several values of $s$.
 >
 > Note that $K(s)$ is genuinely transcendental: at $s=1/2$ both (6) and (8)
 > equal $1314599337728/715-1673566272\log 3$. The content of (7) is that this
@@ -1007,9 +1190,70 @@ p(r)^2
 \tag{12}
 $$
 
-> **[Annotation]** The three constants are
-> $\mathbb EV=1$; $\ \tfrac{2\nu}{4}\mathbb EV^2\,\mathbb EL^{-1}=\tfrac{16}{2}\cdot3\cdot\tfrac1{30}=\tfrac45$;
-> and $\ \tfrac{\nu^2}{16}\mathbb EV^3\,\mathbb EL^{-2}=\tfrac{256}{16}\cdot15\cdot\tfrac1{840}=\tfrac27$.
+> **[Annotation] Derivation of (12).** Recall
+>
+> $$C=\mathbb E[D^2h^2],\qquad
+> V=\frac{D^2}{\lambda},\qquad
+> h=p(r)\left(1-\frac q4\right),\qquad
+> q=\frac{\nu V}{L\Delta}.$$
+>
+> Dividing the definition of $C$ by $\lambda$ and making these substitutions
+> gives
+>
+> $$\begin{aligned}
+> \frac C\lambda
+> &=\mathbb E\!\left[\frac{D^2}{\lambda}h^2\right]\\
+> &=\mathbb E\!\left[
+> Vp(r)^2\left(1-\frac q4\right)^2\right]\\
+> &=\mathbb E\!\left[
+> Vp(r)^2
+> \left(1-\frac{\nu V}{4L\Delta}\right)^2\right].
+> \end{aligned}$$
+>
+> Expanding $(1-a)^2=1-2a+a^2$ with
+> $a=\nu V/(4L\Delta)$, and then multiplying by the leading $V$, yields
+>
+> $$\frac C\lambda
+> =\mathbb E\!\left[
+> p(r)^2\left(
+> V-\frac{\nu V^2}{2L\Delta}
+> +\frac{\nu^2V^3}{16L^2\Delta^2}
+> \right)\right].$$
+>
+> As in the first-order calculation, $V,P,L$ are mutually independent, while
+> $p(r)$ and $\Delta$ are functions of $P$ alone. Conditional on $P$, the inner
+> expectation over $V$ and $L$ is therefore
+>
+> $$\begin{aligned}
+> &\mathbb E\!\left[\left.
+> V-\frac{\nu V^2}{2L\Delta}
+> +\frac{\nu^2V^3}{16L^2\Delta^2}
+> \,\right|\,P\right]\\
+> &\quad=
+> \mathbb EV
+> -\frac{\nu}{2\Delta}\mathbb EV^2\,\mathbb EL^{-1}
+> +\frac{\nu^2}{16\Delta^2}\mathbb EV^3\,\mathbb EL^{-2}\\
+> &\quad=
+> 1-\frac{16}{2\Delta}\cdot3\cdot\frac1{30}
+> +\frac{16^2}{16\Delta^2}\cdot15\cdot\frac1{840}\\
+> &\quad=
+> 1-\frac4{5\Delta}+\frac2{7\Delta^2}.
+> \end{aligned}$$
+>
+> The two nonconstant coefficients simplify because
+>
+> $$\frac{16}{2}\cdot3\cdot\frac1{30}=\frac45,\qquad
+> \frac{16^2}{16}\cdot15\cdot\frac1{840}=\frac27.$$
+>
+> Applying the law of iterated expectation, pulling the $P$-measurable factor
+> $p(r)^2$ outside the conditional expectation, gives
+>
+> $$\frac C\lambda
+> =\mathbb E_P\!\left[
+> p(r)^2\left(1-\frac4{5\Delta}+\frac2{7\Delta^2}\right)\right].$$
+>
+> Finally, $x=2P-1$ reparametrises the remaining expectation, so
+> $\mathbb E_P$ may be written as $\mathbb E_x$. This is exactly (12).
 
 The middle term in parentheses is negative and may be discarded. Furthermore,
 
@@ -1017,15 +1261,50 @@ $$
 p(r)^2
 =
 \frac{(1-s^2)^2(1-x^2)^2(x+s)^2}
-     {16(1+sx)^6},
+     {16(1+sx)^6}.
 $$
 
-and
+> **[Annotation]** This follows by squaring the identity derived in the
+> first-order section:
+>
+> $$p(r)=-\frac{(1-s^2)(1-x^2)(x+s)}
+> {4(1+sx)^3}.$$
+>
+> Hence
+>
+> $$\begin{aligned}
+> p(r)^2
+> &=\left[-\frac{(1-s^2)(1-x^2)(x+s)}
+> {4(1+sx)^3}\right]^2\\
+> &=\frac{(1-s^2)^2(1-x^2)^2(x+s)^2}
+> {4^2(1+sx)^{2\cdot3}}\\
+> &=\frac{(1-s^2)^2(1-x^2)^2(x+s)^2}
+> {16(1+sx)^6}.
+> \end{aligned}$$
+>
+> The minus sign disappears on squaring, $4^2=16$, and
+> $\big((1+sx)^3\big)^2=(1+sx)^6$.
+
+The other identity used below is
 
 $$
 (1+sx)^2-(x+s)^2=(1-s^2)(1-x^2)\ge0.
 \tag{13}
 $$
+
+> **[Annotation] Derivation of (13).** Expanding both squares, the two $2sx$
+> terms cancel:
+>
+> $$\begin{aligned}
+> (1+sx)^2-(x+s)^2
+> &=(1+2sx+s^2x^2)-(x^2+2sx+s^2)\\
+> &=1-s^2-x^2+s^2x^2\\
+> &=(1-s^2)-x^2(1-s^2)\\
+> &=(1-s^2)(1-x^2).
+> \end{aligned}$$
+>
+> Since $|s|<1$ and $|x|\le1$, both factors are nonnegative (and
+> $1-s^2$ is strictly positive), proving the final inequality in (13).
 
 For $k=4,6$, set $I_k(s)=\int_{-1}^1(1-x^2)^9(1+sx)^{-k}dx$. Equations
 (12)–(13) imply
@@ -1039,14 +1318,92 @@ C\le
 \tag{14}
 $$
 
-> **[Annotation]** In detail: $\tfrac1{16}\big(1+\tfrac27\cdot\tfrac4{(1+sx)^2}\big)
-> =\tfrac1{16}+\tfrac1{14(1+sx)^2}$, and (13) gives
-> $(x+s)^2/(1+sx)^2\le1$, applied once to reduce
-> $(x+s)^2(1+sx)^{-6}$ to $(1+sx)^{-4}$ and once to reduce
-> $(x+s)^2(1+sx)^{-8}$ to $(1+sx)^{-6}$.
+> **[Annotation] Derivation of (14).** Recall that
+>
+> $$C=\mathbb E[D^2h^2],$$
+>
+> and equation (12) rewrites this quantity as
+>
+> $$\frac C\lambda
+> =\mathbb E_x\!\left[
+> p(r)^2\left(
+> 1-\frac4{5\Delta}+\frac2{7\Delta^2}
+> \right)\right].$$
+>
+> Since $p(r)^2\ge0$ and $\Delta>0$, the contribution involving
+> $-4/(5\Delta)$ is nonpositive. Discarding it can only increase the right-hand
+> side, so
+>
+> $$\frac C\lambda
+> \le\mathbb E_x\!\left[
+> p(r)^2\left(1+\frac2{7\Delta^2}\right)\right].$$
+>
+> Now $\Delta=(1+sx)/2$, and hence
+>
+> $$\frac2{7\Delta^2}=\frac{8}{7(1+sx)^2}.$$
+>
+> Substitute this, the formula
+>
+> $$p(r)^2=
+> \frac{(1-s^2)^2(1-x^2)^2(x+s)^2}
+> {16(1+sx)^6},$$
+>
+> and the density $(1-x^2)^7/Z$ of $x$. Combining
+> $(1-x^2)^7(1-x^2)^2=(1-x^2)^9$ gives
+>
+> $$\begin{aligned}
+> \frac C\lambda
+> &\le\frac{(1-s^2)^2}{Z}
+> \int_{-1}^1(1-x^2)^9
+> \frac{(x+s)^2}{16(1+sx)^6}
+> \left(1+\frac{8}{7(1+sx)^2}\right)\,dx\\
+> &=\frac{(1-s^2)^2}{Z}\left[
+> \frac1{16}\int_{-1}^1(1-x^2)^9
+> \frac{(x+s)^2}{(1+sx)^6}\,dx
+> +\frac1{14}\int_{-1}^1(1-x^2)^9
+> \frac{(x+s)^2}{(1+sx)^8}\,dx
+> \right],
+> \end{aligned}$$
+>
+> where $(1/16)(8/7)=1/14$. Equation (13) says
+>
+> $$(x+s)^2\le(1+sx)^2.$$
+>
+> Because $1+sx>0$, this bounds the two rational factors by
+>
+> $$\frac{(x+s)^2}{(1+sx)^6}\le\frac1{(1+sx)^4},
+> \qquad
+> \frac{(x+s)^2}{(1+sx)^8}\le\frac1{(1+sx)^6}.$$
+>
+> Therefore, using the definitions of $I_4(s)$ and $I_6(s)$,
+>
+> $$\frac C\lambda
+> \le\frac{(1-s^2)^2}{Z}
+> \left(\frac1{16}I_4(s)+\frac1{14}I_6(s)\right).$$
+>
+> Multiplying both sides by $\lambda>0$ gives exactly (14).
 
-The functions $I_k$ are even. For $0\le s<1$, pairing $x$ with $-x$ shows that
-$I_k(s)$ is increasing in $s$, because the derivative of the paired integrand is
+The functions $I_k$ are even.
+
+> **[Annotation] Why $I_k$ is even.** Here “even” refers to $I_k$ as a function
+> of $s$. From its definition,
+>
+> $$I_k(-s)=\int_{-1}^1(1-x^2)^9(1-sx)^{-k}\,dx.$$
+>
+> Substitute $u=-x$, so $dx=-du$ and the endpoints exchange. Since
+> $1-(-u)^2=1-u^2$,
+>
+> $$\begin{aligned}
+> I_k(-s)
+> &=\int_{1}^{-1}(1-u^2)^9(1+su)^{-k}(-du)\\
+> &=\int_{-1}^{1}(1-u^2)^9(1+su)^{-k}\,du\\
+> &=I_k(s).
+> \end{aligned}$$
+>
+> Thus $I_k(-s)=I_k(s)$ for every $|s|<1$.
+
+For $0\le s<1$, pairing $x$ with $-x$ shows that $I_k(s)$ is increasing in
+$s$, because the derivative of the paired integrand is
 
 $$
 kx(1-x^2)^9
@@ -1055,7 +1412,150 @@ kx(1-x^2)^9
 \right]\ge0
 $$
 
-for $0\le x\le1$. Hence $I_k(s)\le I_k(1)$. Two elementary beta integrals give
+for $0\le x\le1$. Hence $I_k(s)\le I_k(1)$.
+
+> **[Annotation] What “pairing $x$ with $-x$” means.** Split the defining
+> integral at zero:
+>
+> $$\begin{aligned}
+> I_k(s)
+> &=\int_{-1}^1(1-x^2)^9(1+sx)^{-k}\,dx\\
+> &=\int_{-1}^0(1-x^2)^9(1+sx)^{-k}\,dx
+> +\int_0^1(1-x^2)^9(1+sx)^{-k}\,dx.
+> \end{aligned}$$
+>
+> In the first integral, put $u=-x$. Then $x=-u$, $dx=-du$, and the endpoints
+> change as
+>
+> $$x=-1\longmapsto u=1,\qquad x=0\longmapsto u=0.$$
+>
+> Therefore
+>
+> $$\begin{aligned}
+> \int_{-1}^0(1-x^2)^9(1+sx)^{-k}\,dx
+> &=\int_1^0\big(1-(-u)^2\big)^9
+>       \big(1+s(-u)\big)^{-k}(-du)\\
+> &=\int_0^1(1-u^2)^9(1-su)^{-k}\,du.
+> \end{aligned}$$
+>
+> Renaming the dummy variable $u$ back to $x$ and substituting this expression
+> into the split integral gives
+>
+> $$\begin{aligned}
+> I_k(s)
+> &=\int_0^1(1-x^2)^9(1-sx)^{-k}\,dx
+> +\int_0^1(1-x^2)^9(1+sx)^{-k}\,dx\\
+> &=\int_0^1(1-x^2)^9
+> \left[(1+sx)^{-k}+(1-sx)^{-k}\right]\,dx.
+> \end{aligned}$$
+>
+> The two terms in square brackets are the contributions from the original
+> points $x$ and $-x$; placing them together is the “pairing.” For fixed
+> $x\in[0,1]$, differentiate this paired integrand with respect to $s$:
+>
+> $$\begin{aligned}
+> &\frac{\partial}{\partial s}
+> \left\{(1-x^2)^9
+> \left[(1+sx)^{-k}+(1-sx)^{-k}\right]\right\}\\
+> &\quad=kx(1-x^2)^9
+> \left[(1-sx)^{-k-1}-(1+sx)^{-k-1}\right].
+> \end{aligned}$$
+>
+> Here the chain rule gives a minus sign when differentiating $1-sx$, which
+> cancels the minus sign from differentiating the negative power. When
+> $0\le s<1$ and $0\le x\le1$,
+>
+> $$0<1-sx\le1+sx.$$
+>
+> Because $k+1>0$, taking the power $-(k+1)$ reverses this comparison:
+>
+> $$(1-sx)^{-k-1}\ge(1+sx)^{-k-1}.$$
+>
+> Every other factor in the derivative is nonnegative, so the paired integrand
+> is nondecreasing in $s$ for every $x\in[0,1]$. To spell out the passage from
+> the integrand to the integral, define
+>
+> $$H_s(x)=(1-x^2)^9
+> \left[(1+sx)^{-k}+(1-sx)^{-k}\right].$$
+>
+> If $0\le s_1\le s_2<1$, the preceding derivative calculation says
+>
+> $$H_{s_1}(x)\le H_{s_2}(x)\qquad\text{for every }x\in[0,1].$$
+>
+> Integration preserves a pointwise inequality, so
+>
+> $$I_k(s_1)=\int_0^1H_{s_1}(x)\,dx
+> \le\int_0^1H_{s_2}(x)\,dx=I_k(s_2).$$
+>
+> This is exactly the statement that $I_k$ is nondecreasing on $[0,1)$.
+>
+> **Endpoint comparison.** It remains to justify
+> $I_k(s)\le I_k(1)$. The apparent singularity at $s=1$ is removable, and
+> monotone convergence then closes the argument.
+>
+> First, $I_k(1)$ is finite. For $k=4,6$, and for $-1<x<1$,
+>
+> $$\frac{(1-x^2)^9}{(1+x)^k}
+> =(1-x)^9(1+x)^{9-k}.$$
+>
+> Here $9-k$ is $5$ or $3$, so the expression on the right extends continuously
+> to $x=-1$ with value $0$. Thus the singularity in the uncancelled expression
+> for $I_k(1)$ is removable, and
+>
+> $$I_k(1)=\int_{-1}^1(1-x)^9(1+x)^{9-k}\,dx<\infty.$$
+>
+> Recall the paired integrand
+>
+> $$H_t(x)=(1-x^2)^9
+> \left[(1+tx)^{-k}+(1-tx)^{-k}\right],
+> \qquad 0\le x\le1.$$
+>
+> Fix $0\le s<1$ and, for $n=1,2,\ldots$, set
+>
+> $$t_n=1-\frac{1-s}{n}.$$
+>
+> Then $t_1=s$ and $t_n\uparrow1$. The monotonicity already proved shows that,
+> for each fixed $0\le x<1$,
+>
+> $$H_{t_n}(x)\uparrow H_1(x),$$
+>
+> where cancellation of the removable endpoint factors gives
+>
+> $$H_1(x)
+> =(1-x)^9(1+x)^{9-k}
+> +(1+x)^9(1-x)^{9-k}.$$
+>
+> Because $9-k>0$, this expression extends continuously to $x=1$ with value
+> $0$. Also $H_{t_n}(1)=0$ for every finite $n$, since $t_n<1$, so the
+> convergence holds at $x=1$ as well.
+>
+> The functions $H_{t_n}$ are nonnegative. The monotone convergence theorem
+> therefore permits the limit to pass through the integral:
+>
+> $$\begin{aligned}
+> I_k(1)
+> &=\int_0^1H_1(x)\,dx\\
+> &=\lim_{n\to\infty}\int_0^1H_{t_n}(x)\,dx\\
+> &=\lim_{n\to\infty}I_k(t_n).
+> \end{aligned}$$
+>
+> Since $I_k(t_n)$ is nondecreasing and $t_1=s$,
+>
+> $$I_k(s)=I_k(t_1)
+> \le\lim_{n\to\infty}I_k(t_n)
+> =I_k(1).$$
+>
+> Finally, evenness gives
+>
+> $$I_k(s)=I_k(|s|)\le I_k(1)
+> \qquad\text{for every }|s|<1.$$
+>
+> One subtlety is worth emphasizing: monotonicity on $[0,1)$ alone would not
+> determine a separately assigned value at $s=1$. The cancellation and
+> monotone-convergence argument prove that the displayed $I_k(1)$ is genuinely
+> the limit from below.
+
+Two elementary beta integrals give
 
 $$
 \frac{I_4(1)}Z=\frac{12}{7},
@@ -1063,6 +1563,17 @@ $$
 \frac{I_6(1)}Z=\frac92.
 \tag{15}
 $$
+
+> **[Annotation] Wolfram|Alpha checks for (15).** Substituting $s=1$ into the
+> definition of $I_k$ gives
+>
+> $$I_k(1)=\int_{-1}^1\frac{(1-x^2)^9}{(1+x)^k}\,dx,\qquad
+> Z=\int_{-1}^1(1-x^2)^7\,dx.$$
+>
+> Wolfram|Alpha can evaluate each complete ratio directly:
+>
+> - [calculate \(I_4(1)/Z\)](https://www.wolframalpha.com/input?i=%28integral%20from%20-1%20to%201%20of%20%281-x%5E2%29%5E9%2F%281%2Bx%29%5E4%20dx%29%2F%28integral%20from%20-1%20to%201%20of%20%281-x%5E2%29%5E7%20dx%29), which returns $12/7$;
+> - [calculate \(I_6(1)/Z\)](https://www.wolframalpha.com/input?i=%28integral%20from%20-1%20to%201%20of%20%281-x%5E2%29%5E9%2F%281%2Bx%29%5E6%20dx%29%2F%28integral%20from%20-1%20to%201%20of%20%281-x%5E2%29%5E7%20dx%29), which returns $9/2$.
 
 It follows from (14)–(15) that
 
@@ -1252,37 +1763,3 @@ consequence of the samples being independent, not of the marginals being normal.
 
 ---
 
-## Verification log
-
-> **[Annotation]** Status of each step as independently checked against this
-> document. "By hand" means recomputed from scratch; "CAS" means checked in exact
-> symbolic arithmetic.
-
-| step | claim | status |
-|---|---|---|
-| (4) | $\mathbb EL^{-1}=1/30$, $\mathbb EL^{-2}=1/840$ for $\chi^2_{32}$ | by hand ✓ |
-| — | density of $x$ is $(1-x^2)^7/Z$ | by hand ✓ |
-| — | $B/\lambda$ bracket $=1-2/(5\Delta)$ | by hand ✓ |
-| — | $r-\theta$ and $p(r)$ identities in $x$ | by hand ✓ (agree with an independent derivation) |
-| (5) | prefactor $1/(40Z)$, weight $(1-x^2)^8$ | by hand ✓ ($2\cdot4\cdot5=40$) |
-| (6) | kernel $x(x+s)(1+5sx)/(1+sx)^5$ | by hand ✓ |
-| **(7)** | **the exact-derivative identity** | **CAS ✓ (exact)** |
-| (7) | primitive vanishes at $x=\pm1$ | CAS ✓ |
-| (6)=(8) | equality at $s=0,\ 1/2,\ 1$ | CAS ✓ (incl. matching $\log 3$ at $s=1/2$) |
-| — | $1-14z+125z^2=125(z-7/125)^2+76/125>3/5$ | by hand ✓ |
-| (10) | ratio $=16/323$ | by hand ✓ (via $\Gamma$ ratios) |
-| (11) | $(1/40)(3/5)(16/323)=6/8075$ | by hand ✓ |
-| (12) | constants $4/5$ and $2/7$ | by hand ✓ |
-| (14) | the $1/16$ and $1/14$, and use of (13) | by hand ✓ |
-| — | $I_k(s)$ increasing in $s$ | argument checked ✓ |
-| (15) | $I_4(1)/Z=12/7$, $I_6(1)/Z=9/2$ | by hand ✓ (via $\Gamma$ ratios) |
-| (16) | $3/28+9/28=3/7<1/2$ | by hand ✓ |
-| final | $-12/8075+1/1000=-157/323000$ | by hand ✓ |
-| $(*)$ | oracle decomposition | expanded above; proved from Lemmas B.1–B.3 |
-| — | Cochran's theorem, beta–gamma factorisation | cited as standard; not reverified |
-
-Nothing checked so far is inconsistent. The single step that cannot reasonably
-be checked by hand is (7); the original's script
-`verify_very_short_proof_n17.py` checks it, together with the completed square
-and the four beta constants, but not the reduction chain leading to (5)–(6) nor
-the moments (4) — those were confirmed separately by hand as recorded above.
