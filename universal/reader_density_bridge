@@ -1,0 +1,1217 @@
+# Reader expansion: from the raw samples to the reduced experiment
+
+This note expands the probabilistic part of the universal limiting-Bayes
+argument for arbitrary sample sizes
+
+$$
+n_1,n_2\ge 2.
+$$
+
+It starts from the raw normal samples and ends with the exact density
+
+$$
+\boxed{
+f_\theta^Q(r,q)=
+C_{a,b}\,
+r^{a-1}(1-r)^{b-1}q^{1/2}
+\frac{\theta^{b+3/2}(1-\theta)^{a+3/2}}
+{\{2ar(1-\theta)+2b(1-r)\theta
+       +q\theta(1-\theta)\}^{a+b+3/2}},
+}
+\tag{0.1}
+$$
+
+where
+
+$$
+a=\frac{n_1-1}{2},\qquad
+b=\frac{n_2-1}{2}
+\tag{0.2}
+$$
+
+and
+
+$$
+\boxed{
+C_{a,b}=
+\frac{2^{a+b+3/2}a^a b^b\Gamma(a+b+3/2)}
+{\sqrt{2\pi}\,\Gamma(a)\Gamma(b)}.
+}
+\tag{0.3}
+$$
+
+For the smallest unequal pair \((n_1,n_2)=(2,3)\), this reduces to the
+constant \(C_{1/2,1}=8/\pi\).
+
+Nothing below uses the limiting-Bayes theorem.  The purpose is to make the
+statistical reduction, all independence assertions, and every normalization
+constant independently checkable.
+
+## 1. The raw model and the sample-variance convention
+
+We observe two independent normal samples
+
+$$
+X_{ij}\stackrel{\mathrm{iid}}{\sim}N(\mu,\sigma_i^2),
+\qquad j=1,\ldots,n_i,\quad i=1,2,
+\tag{1.1}
+$$
+
+where
+
+$$
+\mu\in\mathbb R,\qquad \sigma_1^2>0,\qquad \sigma_2^2>0.
+$$
+
+The two samples are independent of one another.  Throughout, \(S_i^2\) is
+the usual **unbiased** sample variance:
+
+$$
+S_i^2=\frac1{n_i-1}
+\sum_{j=1}^{n_i}(X_{ij}-\bar X_i)^2.
+\tag{1.2}
+$$
+
+Consequently, the standard normal-sample theorem gives
+
+$$
+U_i:=\frac{(n_i-1)S_i^2}{\sigma_i^2}
+\sim\chi^2_{n_i-1}.
+\tag{1.3}
+$$
+
+This convention matters.  If one instead defined a sample variance with
+denominator \(n_i\), the scaling factors below would change.
+
+Put
+
+$$
+D=\bar X_2-\bar X_1,\qquad
+Y_i=\frac{S_i^2}{n_i},
+\tag{1.4}
+$$
+
+and, whenever \(Y_1+Y_2>0\),
+
+$$
+r=\frac{Y_1}{Y_1+Y_2},\qquad
+q=\frac{D^2}{Y_1+Y_2}.
+\tag{1.5}
+$$
+
+### Null-set convention
+
+Since \(n_i-1>0\), a \(\chi^2_{n_i-1}\) variable is strictly positive almost
+surely.  Equation (1.3) therefore implies
+
+$$
+\mathbb P(S_i^2=0)=0.
+$$
+
+Thus \(Y_1,Y_2>0\) almost surely and
+
+$$
+0<r<1
+$$
+
+almost surely.  We will also see that \(D\sim N(0,\tau)\) with \(\tau>0\);
+hence \(\mathbb P(D=0)=0\), so
+
+$$
+q>0
+$$
+
+almost surely.  We may define \(r\) and \(q\) arbitrarily on the null sets
+where their displayed formulas are undefined.  Such definitions do not
+change any probability or risk.
+
+The value \(q=0\), used later in the analytic contradiction, is therefore a
+**boundary value reached by continuity**, not an event having positive
+probability.
+
+## 2. The unequal-size Graybill--Deal weight
+
+The usual Graybill--Deal estimator weights each sample mean by the reciprocal
+of its estimated variance:
+
+$$
+\delta_{\mathrm{GD}}
+=
+\frac{(n_1/S_1^2)\bar X_1+(n_2/S_2^2)\bar X_2}
+{n_1/S_1^2+n_2/S_2^2}.
+\tag{2.1}
+$$
+
+Since \(Y_i=S_i^2/n_i\), equation (2.1) is
+
+$$
+\delta_{\mathrm{GD}}
+=
+\frac{Y_1^{-1}\bar X_1+Y_2^{-1}\bar X_2}
+{Y_1^{-1}+Y_2^{-1}}.
+$$
+
+The coefficient of \(\bar X_2\) is
+
+$$
+\frac{Y_2^{-1}}{Y_1^{-1}+Y_2^{-1}}
+=\frac{Y_1}{Y_1+Y_2}
+=r.
+\tag{2.2}
+$$
+
+The coefficient of \(\bar X_1\) is \(1-r\).  Therefore, for arbitrary
+possibly unequal sample sizes,
+
+$$
+\boxed{
+\delta_{\mathrm{GD}}
+=(1-r)\bar X_1+r\bar X_2
+=\bar X_1+rD.
+}
+\tag{2.3}
+$$
+
+So Graybill--Deal uses the random quantity \(r\) as an estimate of an
+unknown ideal weight.
+
+## 3. Reparametrizing the two variances
+
+The variances of the sample means are
+
+$$
+v_1=\operatorname{Var}(\bar X_1)=\frac{\sigma_1^2}{n_1},
+\qquad
+v_2=\operatorname{Var}(\bar X_2)=\frac{\sigma_2^2}{n_2}.
+\tag{3.1}
+$$
+
+Define
+
+$$
+\tau=v_1+v_2,\qquad
+\theta=\frac{v_1}{v_1+v_2}=\frac{v_1}{\tau}.
+\tag{3.2}
+$$
+
+Because \(v_1,v_2>0\),
+
+$$
+\tau>0,\qquad 0<\theta<1.
+$$
+
+Conversely,
+
+$$
+v_1=\theta\tau,\qquad v_2=(1-\theta)\tau,
+\tag{3.3}
+$$
+
+and hence
+
+$$
+\sigma_1^2=n_1\theta\tau,\qquad
+\sigma_2^2=n_2(1-\theta)\tau.
+\tag{3.4}
+$$
+
+Thus \((\tau,\theta)\in(0,\infty)\times(0,1)\) is simply another
+one-to-one parametrization of the two positive variances:
+
+* \(\tau\) is their overall scale on the sample-mean scale;
+* \(\theta\) is the ratio governing the optimal weight.
+
+Since the sample means are independent,
+
+$$
+D=\bar X_2-\bar X_1
+\sim N(0,v_1+v_2)
+=N(0,\tau).
+\tag{3.5}
+$$
+
+Therefore
+
+$$
+D_0=\frac D{\sqrt\tau}\sim N(0,1),
+\qquad
+W=D_0^2=\frac{D^2}{\tau}\sim\chi^2_1.
+\tag{3.6}
+$$
+
+In particular,
+
+$$
+\mathbb E_\theta W=1.
+\tag{3.7}
+$$
+
+## 4. The known-variance oracle
+
+Define
+
+$$
+M=\bar X_1+\theta D
+=(1-\theta)\bar X_1+\theta\bar X_2.
+\tag{4.1}
+$$
+
+This is the inverse-variance estimator that would be used if \(v_1,v_2\)
+were known.  Indeed, the inverse-variance coefficient on \(\bar X_2\) is
+
+$$
+\frac{v_2^{-1}}{v_1^{-1}+v_2^{-1}}
+=\frac{v_1}{v_1+v_2}
+=\theta.
+\tag{4.2}
+$$
+
+Let
+
+$$
+A=\bar X_1-\mu,\qquad B=\bar X_2-\mu.
+$$
+
+Then \(A\sim N(0,v_1)\), \(B\sim N(0,v_2)\), and \(A\) and \(B\) are
+independent.  Also
+
+$$
+D=B-A
+$$
+
+and the oracle error is
+
+$$
+E=M-\mu=A+\theta(B-A)=(1-\theta)A+\theta B.
+\tag{4.3}
+$$
+
+Its covariance with \(D\) is
+
+$$
+\begin{aligned}
+\operatorname{Cov}(E,D)
+&=\operatorname{Cov}((1-\theta)A+\theta B,\ B-A)\\
+&=-(1-\theta)\operatorname{Var}(A)
+  +\theta\operatorname{Var}(B)\\
+&=-(1-\theta)v_1+\theta v_2.
+\end{aligned}
+\tag{4.4}
+$$
+
+Using \(v_1=\theta\tau\) and \(v_2=(1-\theta)\tau\),
+
+$$
+\operatorname{Cov}(E,D)
+=-(1-\theta)\theta\tau
++\theta(1-\theta)\tau
+=0.
+\tag{4.5}
+$$
+
+The pair \((E,D)\) is jointly normal because it is a linear transformation of
+the jointly normal pair \((A,B)\).  Jointly normal random variables with zero
+covariance are independent.  Hence
+
+$$
+E\perp D.
+\tag{4.6}
+$$
+
+Its variance is
+
+$$
+\begin{aligned}
+\operatorname{Var}(E)
+&=(1-\theta)^2v_1+\theta^2v_2\\
+&=(1-\theta)^2\theta\tau
+  +\theta^2(1-\theta)\tau\\
+&=\tau\theta(1-\theta)\{(1-\theta)+\theta\}\\
+&=\tau\theta(1-\theta).
+\end{aligned}
+\tag{4.7}
+$$
+
+For a normal sample, the sample mean is independent of the sample variance.
+Using this fact within each sample and independence between samples,
+
+$$
+(\bar X_1,\bar X_2)\perp(S_1^2,S_2^2).
+\tag{4.8}
+$$
+
+Therefore \((E,D)\), which is a function of the two means, is independent
+of \((S_1^2,S_2^2)\).  Combining this with \(E\perp D\) gives
+
+$$
+\boxed{
+E\perp(D,S_1^2,S_2^2).
+}
+\tag{4.9}
+$$
+
+One can verify the last regrouping directly from densities:
+
+$$
+\begin{aligned}
+f_{E,D,S_1^2,S_2^2}
+&=f_{E,D}\,f_{S_1^2,S_2^2}\\
+&=f_E\,f_D\,f_{S_1^2,S_2^2}\\
+&=f_E\,f_{D,S_1^2,S_2^2}.
+\end{aligned}
+$$
+
+The final factorization is precisely (4.9).
+
+## 5. Exact risk decomposition
+
+Let \(\phi=\phi(r,q)\) be any measurable real-valued weight for which the
+displayed risk is finite, and define
+
+$$
+\delta_\phi=\bar X_1+D\phi(r,q).
+\tag{5.1}
+$$
+
+Since \(M=\bar X_1+\theta D\),
+
+$$
+\delta_\phi-\mu
+=E+D\{\phi(r,q)-\theta\}.
+\tag{5.2}
+$$
+
+Squaring,
+
+$$
+\begin{aligned}
+(\delta_\phi-\mu)^2
+={}&E^2
++2ED\{\phi(r,q)-\theta\}\\
+&+D^2\{\phi(r,q)-\theta\}^2.
+\end{aligned}
+\tag{5.3}
+$$
+
+The cross term has expectation zero.  Indeed,
+\(D\{\phi(r,q)-\theta\}\) is a function of
+\((D,S_1^2,S_2^2)\), whereas \(E\) is independent of that entire vector and
+has mean zero.  Thus
+
+$$
+\mathbb E\!\left[ED\{\phi(r,q)-\theta\}\right]
+=\mathbb E[E]\,
+ \mathbb E\!\left[D\{\phi(r,q)-\theta\}\right]
+=0.
+$$
+
+Using (4.7) and \(D^2=\tau D_0^2\), we obtain
+
+$$
+\boxed{
+R_{\mu,\tau,\theta}(\delta_\phi)
+=
+\tau\theta(1-\theta)
++\tau\,
+\mathbb E_\theta\!\left[
+D_0^2\{\phi(r,q)-\theta\}^2
+\right].
+}
+\tag{5.4}
+$$
+
+The first term is the oracle risk and is the same for every \(\phi\).  All
+comparisons between estimators of the form (5.1) reduce to the second term.
+For Graybill--Deal, \(\phi(r,q)=r\).
+
+## 6. The risk-weighted probability law \(Q_\theta\)
+
+Let
+
+$$
+\mathcal Z=(0,1)\times(0,\infty),
+$$
+
+the almost-sure range of \((r,q)\).  For a Borel set
+\(C\subseteq\mathcal Z\), define
+
+$$
+Q_\theta(C)
+=
+\mathbb E_\theta\!\left[
+D_0^2\,\mathbf 1_{\{(r,q)\in C\}}
+\right].
+\tag{6.1}
+$$
+
+This is a probability measure:
+
+1. it is nonnegative;
+2. countable additivity follows from monotone convergence;
+3. by (3.7),
+
+   $$
+   Q_\theta(\mathcal Z)=\mathbb E_\theta[D_0^2]=1.
+   $$
+
+More generally, for every nonnegative measurable \(g\),
+
+$$
+\int_{\mathcal Z}g(r,q)\,Q_\theta(d r\,d q)
+=
+\mathbb E_\theta[D_0^2g(r,q)].
+\tag{6.2}
+$$
+
+This follows first for indicators by definition, then for nonnegative simple
+functions by linearity, and finally for arbitrary nonnegative measurable
+functions by monotone convergence.
+
+Applying (6.2) to \(g(r,q)=\{\phi(r,q)-\theta\}^2\), equation (5.4) becomes
+
+$$
+\boxed{
+R_{\mu,\tau,\theta}(\delta_\phi)
+=
+\tau\theta(1-\theta)
++\tau\int
+\{\phi(r,q)-\theta\}^2\,Q_\theta(d r\,d q).
+}
+\tag{6.3}
+$$
+
+Thus the reduced problem is an ordinary decision problem:
+
+* parameter: \(\theta\in(0,1)\);
+* observation: \((r,q)\sim Q_\theta\);
+* action: the reported value \(\phi(r,q)\);
+* loss: squared error \((\phi-\theta)^2\).
+
+This explains why \(Q_\theta\) is introduced: it absorbs the factor \(D_0^2\)
+already present in the original risk.  It is not an arbitrary change of
+model.
+
+### Why reduced domination implies full domination
+
+Suppose \(\psi(r,q)\) satisfies
+
+$$
+\int(\psi-\theta)^2\,dQ_\theta
+\le
+\int(r-\theta)^2\,dQ_\theta
+\qquad(0<\theta<1),
+\tag{6.4}
+$$
+
+with strict inequality for at least one \(\theta\).  Multiplying by
+\(\tau>0\) and adding the common oracle term in (6.3) shows that
+
+$$
+\bar X_1+D\psi(r,q)
+$$
+
+dominates Graybill--Deal in the original normal problem.  This holds for
+every \(\mu\) and \(\tau>0\).  Equation (3.4) shows that all positive variance
+pairs are covered.
+
+We only need to find a dominator inside the subclass (5.1).  Allowing all
+possible estimators in the original problem cannot restore admissibility
+after a dominator has been found in this smaller subclass.
+
+## 7. Removing the nuisance location and scale
+
+The common mean \(\mu\) does not enter the law of \(D\), the sample
+variances, \(r\), or \(q\).
+
+Define the normalized variables
+
+$$
+G_1=\frac{Y_1}{\tau},\qquad
+G_2=\frac{Y_2}{\tau},\qquad
+W=\frac{D^2}{\tau}=D_0^2.
+\tag{7.1}
+$$
+
+Then
+
+$$
+r=\frac{G_1}{G_1+G_2},
+\qquad
+q=\frac{W}{G_1+G_2}.
+\tag{7.2}
+$$
+
+Therefore the distribution of \((r,q)\) is unchanged if we set
+\(\tau=1\).  After division by \(\tau\), it depends only on \(\theta\).
+
+This is the precise meaning of â€œnormalize \(\tau=1\).â€  It does not assume
+special values of the original variances; it applies an invertible scale
+change to the variables.
+
+## 8. The component laws for arbitrary \(n_1,n_2\)
+
+Recall
+
+$$
+a=\frac{n_1-1}{2},\qquad
+b=\frac{n_2-1}{2},
+$$
+
+so \(n_1-1=2a\) and \(n_2-1=2b\).  From (1.3),
+
+$$
+U_1\sim\chi^2_{2a},
+\qquad
+U_2\sim\chi^2_{2b}.
+\tag{8.1}
+$$
+
+Solving (1.3) for \(S_i^2\),
+
+$$
+S_1^2=\frac{\sigma_1^2}{2a}U_1,
+\qquad
+S_2^2=\frac{\sigma_2^2}{2b}U_2.
+\tag{8.2}
+$$
+
+Hence
+
+$$
+\begin{aligned}
+G_1
+&=\frac{S_1^2}{n_1\tau}
+=\frac{\sigma_1^2}{n_1\tau}\frac{U_1}{2a}
+=\theta\frac{U_1}{2a},
+\\[1ex]
+G_2
+&=\frac{S_2^2}{n_2\tau}
+=\frac{\sigma_2^2}{n_2\tau}\frac{U_2}{2b}
+=(1-\theta)\frac{U_2}{2b}.
+\end{aligned}
+\tag{8.3}
+$$
+
+A \(\chi^2_{2a}\) variable is
+
+$$
+\operatorname{Gamma}(a,\text{ scale }2).
+$$
+
+Dividing it by \(2a\) gives
+
+$$
+\operatorname{Gamma}\left(a,\text{ scale }\frac1a\right).
+$$
+
+Therefore
+
+$$
+\boxed{
+G_1\sim\operatorname{Gamma}
+\left(a,\text{ scale }\frac{\theta}{a}\right),
+\qquad
+G_2\sim\operatorname{Gamma}
+\left(b,\text{ scale }\frac{1-\theta}{b}\right).
+}
+\tag{8.4}
+$$
+
+For reference, a Gamma variable with shape \(\alpha\) and scale \(s\) has
+density
+
+$$
+\frac{x^{\alpha-1}e^{-x/s}}
+{\Gamma(\alpha)s^\alpha},
+\qquad x>0.
+\tag{8.5}
+$$
+
+Consequently,
+
+$$
+f_{G_1}(g_1)
+=
+\frac{a^a}{\Gamma(a)\theta^a}
+g_1^{a-1}
+\exp\!\left(-\frac{ag_1}{\theta}\right),
+\qquad g_1>0,
+\tag{8.6}
+$$
+
+and
+
+$$
+f_{G_2}(g_2)
+=
+\frac{b^b}{\Gamma(b)(1-\theta)^b}
+g_2^{b-1}
+\exp\!\left(-\frac{bg_2}{1-\theta}\right),
+\qquad g_2>0.
+\tag{8.7}
+$$
+
+From (3.6),
+
+$$
+W\sim\chi^2_1,
+$$
+
+with density
+
+$$
+f_W(w)
+=
+\frac1{\sqrt{2\pi}}w^{-1/2}e^{-w/2},
+\qquad w>0.
+\tag{8.8}
+$$
+
+The variables \(G_1,G_2,W\) are mutually independent:
+
+* \(G_1\) and \(G_2\) are functions of different independent samples;
+* \(W\) is a function of the two sample means;
+* the vector of sample means is independent of the vector of sample
+  variances in the normal model.
+
+## 9. What the \(Q_\theta\) weighting does
+
+It is convenient temporarily to extend the weighting defining \(Q_\theta\)
+to the full triple \((G_1,G_2,W)\), and then take the distribution of
+\((r,q)\).
+
+The weight is \(W\), so the \(W\)-density becomes
+
+$$
+f_W^Q(w)
+=w f_W(w)
+=\frac1{\sqrt{2\pi}}w^{1/2}e^{-w/2}.
+\tag{9.1}
+$$
+
+This is normalized because
+
+$$
+\int_0^\infty w f_W(w)\,dw=\mathbb E W=1.
+$$
+
+It is also exactly the density of \(\chi^2_3\):
+
+$$
+\frac1{2^{3/2}\Gamma(3/2)}w^{3/2-1}e^{-w/2}
+=
+\frac1{\sqrt{2\pi}}w^{1/2}e^{-w/2},
+\tag{9.2}
+$$
+
+because \(\Gamma(3/2)=\sqrt\pi/2\).  Thus the risk weighting has the simple
+effect
+
+$$
+\chi^2_1\longmapsto\chi^2_3.
+$$
+
+Since \(W\) was independent of \((G_1,G_2)\), and the weight depends only on
+\(W\), the joint weighted density remains the product
+
+$$
+f_{G_1}(g_1)f_{G_2}(g_2)f_W^Q(w).
+\tag{9.3}
+$$
+
+Substitution of (8.6), (8.7), and (9.1) gives
+
+$$
+\begin{aligned}
+&\frac{a^a b^b}
+{\sqrt{2\pi}\,\Gamma(a)\Gamma(b)
+ \theta^a(1-\theta)^b}
+g_1^{a-1}g_2^{b-1}w^{1/2}\\
+&\qquad{}\times
+\exp\!\left\{
+-\frac{ag_1}{\theta}
+-\frac{bg_2}{1-\theta}
+-\frac w2
+\right\}.
+\end{aligned}
+\tag{9.4}
+$$
+
+## 10. The change of variables \((G_1,G_2,W)\mapsto(r,q,t)\)
+
+Put
+
+$$
+t=G_1+G_2.
+\tag{10.1}
+$$
+
+The inverse transformation is
+
+$$
+G_1=rt,\qquad
+G_2=(1-r)t,\qquad
+W=qt,
+\tag{10.2}
+$$
+
+on the domain
+
+$$
+0<r<1,\qquad q>0,\qquad t>0.
+$$
+
+It is smooth and one-to-one between the positive domains.  Using columns in
+the order \((r,q,t)\),
+
+$$
+\frac{\partial(G_1,G_2,W)}{\partial(r,q,t)}
+=
+\begin{pmatrix}
+t&0&r\\
+-t&0&1-r\\
+0&t&q
+\end{pmatrix}.
+\tag{10.3}
+$$
+
+Its determinant is \(-t^2\), so the absolute Jacobian is
+
+$$
+\left|
+\frac{\partial(G_1,G_2,W)}{\partial(r,q,t)}
+\right|
+=t^2.
+\tag{10.4}
+$$
+
+The power factors in (9.4) become
+
+$$
+\begin{aligned}
+G_1^{a-1}G_2^{b-1}W^{1/2}
+&=(rt)^{a-1}\{(1-r)t\}^{b-1}(qt)^{1/2}\\
+&=r^{a-1}(1-r)^{b-1}q^{1/2}
+t^{a+b-3/2}.
+\end{aligned}
+\tag{10.5}
+$$
+
+Multiplication by the Jacobian \(t^2\) changes the \(t\)-power to
+
+$$
+t^{a+b+1/2}.
+\tag{10.6}
+$$
+
+Define
+
+$$
+p=a+b+\frac32.
+\tag{10.7}
+$$
+
+Then \(a+b+1/2=p-1\), so the power is \(t^{p-1}\).
+
+The exponent in (9.4) becomes
+
+$$
+-tA_\theta(r,q),
+$$
+
+where
+
+$$
+A_\theta(r,q)
+=\frac{ar}{\theta}
++\frac{b(1-r)}{1-\theta}
++\frac q2.
+\tag{10.8}
+$$
+
+Hence the joint weighted density of \((r,q,t)\) is
+
+$$
+\begin{aligned}
+&
+\frac{a^a b^b}
+{\sqrt{2\pi}\,\Gamma(a)\Gamma(b)
+ \theta^a(1-\theta)^b}\\
+&\quad{}\times
+r^{a-1}(1-r)^{b-1}q^{1/2}
+t^{p-1}e^{-tA_\theta(r,q)}.
+\end{aligned}
+\tag{10.9}
+$$
+
+## 11. Integrating out \(t\)
+
+Since \(A_\theta(r,q)>0\),
+
+$$
+\int_0^\infty t^{p-1}e^{-At}\,dt
+=\frac{\Gamma(p)}{A^p}.
+\tag{11.1}
+$$
+
+This is the defining Gamma integral after the substitution \(u=At\).
+Integrating (10.9) over \(t\) gives
+
+$$
+\begin{aligned}
+f_\theta^Q(r,q)
+={}&
+\frac{a^a b^b\Gamma(p)}
+{\sqrt{2\pi}\,\Gamma(a)\Gamma(b)
+ \theta^a(1-\theta)^b}\\
+&\quad{}\times
+r^{a-1}(1-r)^{b-1}q^{1/2}
+A_\theta(r,q)^{-p}.
+\end{aligned}
+\tag{11.2}
+$$
+
+Put \(A_\theta\) over the common denominator
+\(2\theta(1-\theta)\):
+
+$$
+A_\theta(r,q)
+=
+\frac{
+2ar(1-\theta)+2b(1-r)\theta
+  +q\theta(1-\theta)}
+{2\theta(1-\theta)}.
+\tag{11.3}
+$$
+
+Define
+
+$$
+B_\theta(r,q)
+=
+2ar(1-\theta)+2b(1-r)\theta
+  +q\theta(1-\theta).
+\tag{11.4}
+$$
+
+Then
+
+$$
+A_\theta(r,q)^{-p}
+=
+\frac{2^p\theta^p(1-\theta)^p}
+{B_\theta(r,q)^p}.
+\tag{11.5}
+$$
+
+Substituting into (11.2), the powers of \(\theta\) are
+
+$$
+\theta^{p-a}
+=\theta^{b+3/2}
+\tag{11.6}
+$$
+
+and
+
+$$
+(1-\theta)^{p-b}
+=(1-\theta)^{a+3/2}.
+\tag{11.7}
+$$
+
+Therefore
+
+$$
+\boxed{
+\begin{aligned}
+f_\theta^Q(r,q)
+={}&
+\frac{2^p a^a b^b\Gamma(p)}
+{\sqrt{2\pi}\,\Gamma(a)\Gamma(b)}
+r^{a-1}(1-r)^{b-1}q^{1/2}\\
+&\times
+\frac{\theta^{b+3/2}(1-\theta)^{a+3/2}}
+{\{2ar(1-\theta)+2b(1-r)\theta
+  +q\theta(1-\theta)\}^{p}},
+\end{aligned}
+}
+\tag{11.8}
+$$
+
+where \(p=a+b+3/2\).  This is exactly (0.1)--(0.3).
+
+The â€œcrossedâ€ exponents
+
+$$
+\theta^{b+3/2}(1-\theta)^{a+3/2}
+$$
+
+are not typographical errors.  They arise from subtracting the original
+\(\theta^{-a}(1-\theta)^{-b}\) Gamma normalizers from the factor
+\(\{\theta(1-\theta)\}^p\) created when \(A_\theta^{-p}\) is simplified.
+
+## 12. Why the density is normalized and everywhere positive
+
+There is no need to perform the difficult double integral in \(r\) and
+\(q\).  Normalization follows from the construction:
+
+1. the densities in (8.6), (8.7), and (9.1) each integrate to one;
+2. their product (9.3) is therefore a probability density;
+3. the bijective change of variables (10.2), using the exact Jacobian
+   (10.4), preserves total mass;
+4. integrating out \(t\) preserves the remaining total mass.
+
+Thus (11.8) integrates to one.
+
+It is strictly positive for every
+
+$$
+0<\theta<1,\qquad 0<r<1,\qquad q>0.
+$$
+
+Indeed every factor in its numerator is positive, while
+
+$$
+B_\theta(r,q)
+=
+2ar(1-\theta)+2b(1-r)\theta
+  +q\theta(1-\theta)>0.
+$$
+
+The reduced experiment is consequently dominated by two-dimensional
+Lebesgue measure \(dr\,dq\), and its density is everywhere positive on the
+open observation space.  These are the density facts needed for the
+limiting-Bayes complete-class theorem.
+
+Also, if \(N\subseteq\mathcal Z\) is null for the ordinary distribution of
+\((r,q)\), then it remains null after risk weighting:
+
+$$
+Q_\theta(N)
+=\mathbb E_\theta[
+W\mathbf 1_{\{(r,q)\in N\}}]
+=0.
+$$
+
+Thus the null-set conventions made in Section 1 remain harmless under
+\(Q_\theta\).
+
+## 13. Check at \((n_1,n_2)=(2,3)\): why the constant is \(8/\pi\)
+
+For \(n_1=2,n_2=3\),
+
+$$
+a=\frac12,\qquad b=1,\qquad p=3.
+$$
+
+The general constant becomes
+
+$$
+\begin{aligned}
+C_{1/2,1}
+&=
+\frac{2^3(1/2)^{1/2}1^1\Gamma(3)}
+{\sqrt{2\pi}\,\Gamma(1/2)\Gamma(1)}\\
+&=
+\frac{8(1/\sqrt2)(2)}
+{\sqrt{2\pi}(\sqrt\pi)(1)}\\
+&=
+\frac{8\sqrt2}{\sqrt2\,\pi}\\
+&=\frac8\pi.
+\end{aligned}
+\tag{13.1}
+$$
+
+Moreover,
+
+$$
+r^{a-1}(1-r)^{b-1}=r^{-1/2},
+$$
+
+and
+
+$$
+B_\theta(r,q)
+=r(1-\theta)+2(1-r)\theta+q\theta(1-\theta).
+$$
+
+Thus (11.8) reduces to
+
+$$
+\boxed{
+f_\theta^Q(r,q)
+=
+\frac8\pi\frac{q^{1/2}}{\sqrt r}\,
+\frac{\theta^{5/2}(1-\theta)^2}
+{\{r(1-\theta)+2(1-r)\theta
+  +q\theta(1-\theta)\}^3}.
+}
+\tag{13.2}
+$$
+
+## 14. Compact map of the reduction
+
+The probabilistic chain is
+
+$$
+\begin{aligned}
+\text{raw normal samples}
+&\longrightarrow
+(D,Y_1,Y_2)\\
+&\longrightarrow
+(W,G_1,G_2)\\
+&\xrightarrow{\text{weight by }W}
+Q_\theta\\
+&\longrightarrow
+(r,q).
+\end{aligned}
+$$
+
+At the risk level,
+
+$$
+\begin{aligned}
+R(\bar X_1+D\phi)
+&=
+\underbrace{\tau\theta(1-\theta)}
+_{\text{common oracle risk}}\\
+&\quad+
+\underbrace{\tau
+\int(\phi-\theta)^2\,dQ_\theta}
+_{\text{part depending on }\phi}.
+\end{aligned}
+$$
+
+Therefore, proving that \(r\) is inadmissible for estimating \(\theta\) in
+the \(Q_\theta\)-experiment is sufficient to prove that the original
+Graybill--Deal estimator is inadmissible.
+
+## 15. WolframAlpha / computer-algebra checklist
+
+The following inputs check the main algebra.  WolframAlpha generally accepts
+either the plain-language descriptions or the Mathematica-style inputs.
+
+### Oracle covariance
+
+```text
+simplify -(1-theta)*(theta*tau) + theta*((1-theta)*tau)
+```
+
+Result: \(0\).
+
+### Oracle variance
+
+```text
+simplify (1-theta)^2*(theta*tau)
+       + theta^2*((1-theta)*tau)
+```
+
+Result: \(\theta(1-\theta)\tau\).
+
+### Unequal-size Graybill--Deal coefficient
+
+```text
+simplify (1/y2)/(1/y1+1/y2)
+```
+
+Result: \(y_1/(y_1+y_2)\).
+
+### Gamma scaling
+
+Ask for
+
+```text
+chi square distribution with 2a degrees of freedom pdf
+```
+
+and substitute \(u=2ag/\theta\), including the derivative
+\(du/dg=2a/\theta\).  The resulting density is (8.6).
+
+Equivalently, use:
+
+```text
+If U ~ Gamma(shape a, scale 2),
+distribution of theta U/(2a)
+```
+
+The answer is
+\(\operatorname{Gamma}(a,\text{ scale }\theta/a)\).
+
+### Risk weighting
+
+Ask for the \(\chi^2_1\) and \(\chi^2_3\) densities.  Multiplying the
+\(\chi^2_1\) density by \(w\) gives the \(\chi^2_3\) density because
+
+```text
+Gamma(3/2)
+```
+
+returns \(\sqrt\pi/2\).
+
+### Jacobian
+
+```text
+det {{t,0,r},{-t,0,1-r},{0,t,q}}
+```
+
+Result: \(-t^2\), whose absolute value is \(t^2\).
+
+### Power of \(t\)
+
+```text
+simplify (a-1)+(b-1)+1/2+2
+```
+
+Result: \(a+b+1/2=p-1\).
+
+### Gamma integral
+
+```text
+integrate t^(p-1) exp(-A t)
+from t=0 to infinity, assuming A>0 and p>0
+```
+
+Result: \(\Gamma(p)/A^p\).
+
+### Common denominator in the exponent
+
+```text
+together a*r/theta + b*(1-r)/(1-theta) + q/2
+```
+
+Result:
+
+$$
+\frac{2ar(1-\theta)+2b(1-r)\theta
+      +q\theta(1-\theta)}
+{2\theta(1-\theta)}.
+$$
+
+### General normalization constant
+
+With \(p=a+b+3/2\), simplify
+
+```text
+(a^a*b^b /
+ (sqrt(2*pi)*Gamma(a)*Gamma(b)*theta^a*(1-theta)^b))
+* Gamma(p) * (2*theta*(1-theta))^p
+```
+
+The result is
+
+$$
+\frac{2^p a^a b^b\Gamma(p)}
+{\sqrt{2\pi}\Gamma(a)\Gamma(b)}
+\theta^{b+3/2}(1-\theta)^{a+3/2}.
+$$
+
+### The special constant \(8/\pi\)
+
+```text
+simplify
+2^3*(1/2)^(1/2)*Gamma(3) /
+(sqrt(2*pi)*Gamma(1/2)*Gamma(1))
+```
+
+Result: \(8/\pi\).
