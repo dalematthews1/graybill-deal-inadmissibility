@@ -1,0 +1,9 @@
+import GraybillDeal.UniversalFiniteStatisticalCompleteClass
+
+namespace GraybillDeal.FiniteStatisticalRiskSet
+
+#print axioms finitePriorSquaredRisk_decomposition
+#print axioms eq_bayesAction_of_finitePrior_support
+#print axioms exists_positiveFinitePrior_bayesAction_eq_of_finite_admissible
+
+end GraybillDeal.FiniteStatisticalRiskSet

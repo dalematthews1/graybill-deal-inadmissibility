@@ -1,0 +1,11 @@
+import GraybillDeal.UniversalFinitePriorBayesRisk
+
+/-!
+# Axiom audit for finite-prior integrated Bayes risk
+-/
+
+#print axioms GraybillDeal.PositiveFinitePrior.finitePriorBayesRisk_eq_integratedSquaredRisk
+#print axioms GraybillDeal.PositiveFinitePrior.posteriorSquaredLoss_decomposition_of_total_ne_zero
+#print axioms GraybillDeal.PositiveFinitePrior.finitePriorBayesRisk_decomposition
+#print axioms GraybillDeal.PositiveFinitePrior.finitePriorBayesRisk_bayes_le
+#print axioms GraybillDeal.PositiveFinitePrior.ae_eq_bayesAction_of_finitePriorBayesRisk_eq

@@ -1,0 +1,6 @@
+import GraybillDeal.UniversalUnequalAlgebra
+
+#print axioms GraybillDeal.universalReducedDenominator_pivot_zero
+#print axioms GraybillDeal.universalUnequalMoment_of_odeMoments
+#print axioms GraybillDeal.universalUnequal_qDerivative_of_odeMoments
+#print axioms GraybillDeal.universalUnequal_no_zero_qDerivative

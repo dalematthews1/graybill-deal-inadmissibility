@@ -1,0 +1,12 @@
+import GraybillDeal.UniversalRawDensityIdentity
+
+/-!
+# Axiom audit for the unconditional raw density identity
+-/
+
+#print axioms GraybillDeal.gammaPositiveScaleDensity_half_eq
+#print axioms GraybillDeal.gammaPDFReal_three_half_half_eq
+#print axioms GraybillDeal.universalCanonicalScaledProductDensity_eq_weighted
+#print axioms GraybillDeal.universalCanonicalScaledProductDensity_restrict_eq_weightedMeasure
+#print axioms GraybillDeal.map_universalRawComponentsToCanonical_eq_scaledProductDensity
+#print axioms GraybillDeal.universalRiskTiltedComponentReducedDensityIdentity

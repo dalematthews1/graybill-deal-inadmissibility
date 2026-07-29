@@ -1,0 +1,13 @@
+import GraybillDeal.UniversalFiniteStatisticalRiskSet
+
+namespace GraybillDeal.FiniteStatisticalRiskSet
+
+#print axioms upperRiskSet_convex
+#print axioms exists_probability_supporting_risk_weights
+#print axioms positivePartOfWeights_sum
+#print axioms exists_positiveFinitePrior_supporting_risk
+#print axioms finiteSquaredRisk_mix_le
+#print axioms exists_probability_supporting_weights_of_finite_admissible
+#print axioms exists_positiveFinitePrior_supporting_finite_admissible
+
+end GraybillDeal.FiniteStatisticalRiskSet

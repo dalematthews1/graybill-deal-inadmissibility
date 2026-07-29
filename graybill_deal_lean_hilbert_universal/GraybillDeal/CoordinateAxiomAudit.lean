@@ -1,0 +1,6 @@
+import GraybillDeal.UnequalDampedCoordinates
+
+#print axioms GraybillDeal.unequalDampedB_integrand_factorization13_17
+#print axioms GraybillDeal.unequalDampedC_integrand_factorization17_13
+#print axioms GraybillDeal.unequalDampedC_pointwise_le_envelope13_17
+#print axioms GraybillDeal.unequalDampedC_pointwise_le_envelope17_13

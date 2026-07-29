@@ -1,0 +1,17 @@
+import GraybillDeal.UniversalRadialGammaIntegral
+
+/-!
+Machine-readable axiom audit for the radial Gamma-integral module.
+-/
+
+namespace GraybillDeal
+
+#print axioms integral_universalRadialGammaIntegrand
+#print axioms integrableOn_universalPreRadialDensity
+#print axioms integral_universalPreRadialDensity_eq_fullReducedDensity
+#print axioms lintegral_universalPreRadialDensity_eq_fullReducedDensity
+#print axioms canonicalWeightedTripleDensity_comp_inverse_mul_jacobian
+#print axioms lintegral_canonicalWeightedTripleDensity_comp_inverse
+#print axioms hasUniversalReducedDensity_of_radial_lintegral
+
+end GraybillDeal

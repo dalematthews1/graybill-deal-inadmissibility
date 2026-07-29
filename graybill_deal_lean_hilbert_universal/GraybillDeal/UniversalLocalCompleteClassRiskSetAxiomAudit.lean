@@ -1,0 +1,11 @@
+import GraybillDeal.UniversalLocalCompleteClassRiskSet
+
+namespace GraybillDeal.CompleteClass
+
+#print axioms exists_positiveFinitePrior_localEDistGap_lt
+#print axioms measure_local_bayes_badSet_le
+#print axioms exists_positiveFinitePrior_geometric_badSet_bound
+#print axioms measurableCompatibleLocalCompleteClassProperty_of_closedConvexLocalRiskSets
+#print axioms measurablePositiveFiniteBayesCompleteClassProperty_of_closedConvexLocalRiskSets
+
+end GraybillDeal.CompleteClass

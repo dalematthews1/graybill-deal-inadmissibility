@@ -1,0 +1,8 @@
+import GraybillDeal.UniversalClosedConvexLocalTheorem
+
+namespace GraybillDeal
+
+#print axioms canonicalUniversalReducedBaseline_not_measurablyAdmissible_of_closedConvexLocalRiskSets
+#print axioms canonicalUniversalReducedBaseline_not_measurablyAdmissible_sampleSizes_of_closedConvexLocalRiskSets
+
+end GraybillDeal

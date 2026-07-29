@@ -1,0 +1,5 @@
+import GraybillDeal.UniversalUnequalQBridge
+
+#print axioms GraybillDeal.UniversalPosteriorIdentity.balancedQResidual_eq_zero
+#print axioms GraybillDeal.UniversalPosteriorIdentity.balancedQDerivative_eq_zero
+#print axioms GraybillDeal.UniversalPosteriorIdentity.unequal_false

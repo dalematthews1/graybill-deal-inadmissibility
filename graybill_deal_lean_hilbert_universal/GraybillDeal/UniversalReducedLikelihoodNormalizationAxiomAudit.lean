@@ -1,0 +1,13 @@
+import GraybillDeal.UniversalReducedLikelihoodNormalization
+
+/-!
+# Axiom audit for canonical likelihood normalization
+-/
+
+#print axioms
+  GraybillDeal.isProbabilityMeasure_universalRawRiskTiltedIndependentComponentMeasure
+#print axioms
+  GraybillDeal.isProbabilityMeasure_universalReducedLikelihood_withDensity
+#print axioms GraybillDeal.universalReducedLikelihood_lintegral_eq_one
+#print axioms
+  GraybillDeal.ae_mem_Icc_of_canonicalUniversalReduced_measurablyAdmissible

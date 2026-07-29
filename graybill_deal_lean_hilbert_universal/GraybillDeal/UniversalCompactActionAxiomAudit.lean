@@ -1,0 +1,18 @@
+import GraybillDeal.UniversalCompactAction
+
+/-!
+# Axiom audit for compact-action reductions
+-/
+
+#print axioms GraybillDeal.PositiveFinitePrior.bayesAction_mem_Icc
+#print axioms GraybillDeal.PositiveFinitePrior.bayesAction_universalInterior_mem_Icc
+#print axioms GraybillDeal.Measurable.clip01
+#print axioms GraybillDeal.clip01_sq_sub_lt_sq_sub
+#print axioms GraybillDeal.densitySquaredRisk_clip01_le
+#print axioms GraybillDeal.densitySquaredRisk_const_zero_ne_top_of_normalized
+#print axioms GraybillDeal.exists_densitySquaredRisk_ne_top_of_measurablyAdmissible
+#print axioms GraybillDeal.densitySquaredRisk_clip01_lt
+#print axioms GraybillDeal.measurableDensitySquaredRiskDominates_clip01
+#print axioms GraybillDeal.measure_outside_Icc_eq_zero_of_measurablyAdmissible
+#print axioms GraybillDeal.ae_mem_Icc_of_measurablyAdmissible
+#print axioms GraybillDeal.ae_mem_Icc_of_measurablyAdmissible_of_normalized

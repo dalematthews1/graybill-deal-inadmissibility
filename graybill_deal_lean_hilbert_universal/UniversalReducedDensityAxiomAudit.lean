@@ -1,0 +1,6 @@
+import GraybillDeal.UniversalReducedDensity
+
+#print axioms GraybillDeal.universalB_eq_two_mul_radialRate
+#print axioms GraybillDeal.universalFullReducedDensity_eq_explicit
+#print axioms GraybillDeal.ae_universalReducedObservationReference_iff
+#print axioms GraybillDeal.hasUniversalReducedDensity_iff_rebasedLikelihood

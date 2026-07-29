@@ -1,0 +1,18 @@
+import GraybillDeal.UniversalHilbertUnconditionalTheorem
+
+/-!
+# Axiom audit for the Hilbert complete-class and unconditional raw theorem
+-/
+
+#print axioms
+  GraybillDeal.tendsto_strong_of_tendsto_weak_of_anchorRisk_le
+#print axioms
+  GraybillDeal.hasPositiveFiniteBayesApproximation_of_universalHilbertBayesWitnessClosure
+#print axioms
+  GraybillDeal.universalMeasurableFiniteBayesCompleteClassProperty_halfShapes
+#print axioms GraybillDeal.exists_universalRaw_dominator
+#print axioms GraybillDeal.universalRawGraybillDeal_not_admissible
+#print axioms
+  GraybillDeal.exists_universalRaw_measurableEstimator_dominator
+#print axioms
+  GraybillDeal.universalRawGraybillDeal_not_admissible_among_all_measurableEstimators

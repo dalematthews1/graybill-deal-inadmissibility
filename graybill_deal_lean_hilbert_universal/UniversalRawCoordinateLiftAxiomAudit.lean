@@ -1,0 +1,8 @@
+import GraybillDeal.UniversalRawCoordinateLift
+
+#print axioms GraybillDeal.gammaMeasure_ae_pos
+#print axioms GraybillDeal.TwoNormalSamplesU.ae_pos_residualSumSquaresX
+#print axioms GraybillDeal.TwoNormalSamplesU.ae_ne_meanDifferenceU
+#print axioms GraybillDeal.TwoNormalSamplesU.ae_mem_universalRawReducedCoordinates
+#print axioms GraybillDeal.measurable_universalRawReducedObservation
+#print axioms GraybillDeal.TwoNormalSamplesU.ae_coe_universalRawReducedObservation_eq

@@ -1,0 +1,20 @@
+import GraybillDeal.UniversalReducedRiskRebase
+
+/-! Axiom audit for the universal reduced-risk rebasing layer. -/
+
+open GraybillDeal
+
+#print axioms densitySquaredRisk_eq_lintegral_of_eq_withDensity
+#print axioms integrable_squaredError_of_densitySquaredRisk_ne_top
+#print axioms measureSquaredRisk_le_of_densitySquaredRisk_le
+#print axioms measureSquaredRisk_lt_of_densitySquaredRisk_lt
+#print axioms HasUniversalReducedDensity.rebased_densitySquaredRisk_eq_lintegral
+#print axioms HasUniversalReducedDensity.rebased_baselineRisk_ne_top
+#print axioms HasUniversalReducedDensity.rebased_measureSquaredRisk_le_of_finiteLaw
+#print axioms HasUniversalReducedDensity.rebased_measureSquaredRisk_lt_of_finiteLaw
+#print axioms HasWeightedReducedLaw.isFiniteMeasure
+#print axioms HasWeightedReducedLaw.integrable_weighted_comp
+#print axioms HasWeightedReducedLaw.integrable_universalRawReduced_quadratic
+#print axioms HasWeightedReducedLaw.integrable_universalRawGraybillDeal_quadratic
+#print axioms HasWeightedReducedLaw.measureSquaredRisk_eq_universalRawReduced
+#print axioms HasWeightedReducedLaw.measureSquaredRisk_eq_universalRawGraybillDeal

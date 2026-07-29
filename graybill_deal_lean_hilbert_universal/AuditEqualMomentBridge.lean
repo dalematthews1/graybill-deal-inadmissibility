@@ -1,0 +1,4 @@
+import GraybillDeal.UniversalEqualMomentBridge
+
+#print axioms GraybillDeal.universalEqualQuotientIdentities_of_centered_identity
+#print axioms GraybillDeal.UniversalPosteriorIdentity.equal_quotientIdentities
